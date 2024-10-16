@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -12,7 +13,34 @@ class AdminController extends Controller
      */
     public function dashboard()
     {
+
         return view('admin.dashboard');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('admin.login');
+    }
+
+    public function guru()
+    {
+
+        return view('admin.guru');
+    }
+
+    public function dudi()
+    {
+
+        return view('admin.dudi');
+    }
+
+    public function pembimbing()
+    {
+
+        return view('admin.pembimbing');
     }
 
     /**
