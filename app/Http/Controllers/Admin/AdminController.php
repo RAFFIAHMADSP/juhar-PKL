@@ -25,12 +25,6 @@ class AdminController extends Controller
         return redirect()->route('admin.login');
     }
 
-    public function guru()
-    {
-
-        return view('admin.guru');
-    }
-
     public function dudi()
     {
 
