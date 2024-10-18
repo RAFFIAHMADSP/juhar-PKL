@@ -25,12 +25,6 @@ class AdminController extends Controller
         return redirect()->route('admin.login');
     }
 
-    public function dudi()
-    {
-
-        return view('admin.dudi');
-    }
-
     public function pembimbing()
     {
 
