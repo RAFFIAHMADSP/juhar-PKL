@@ -11,7 +11,7 @@ class guru extends Model
     protected $table = 'guru';
     protected $primaryKey = 'id_guru';
 
-    protected $fillable = ['nip', 'password', 'Email', 'nama_guru', 'foto'];
+    protected $fillable = ['nip', 'password', 'email', 'nama_guru', 'foto'];
 
     protected $hidden = [
         'password'
