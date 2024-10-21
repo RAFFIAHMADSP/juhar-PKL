@@ -25,12 +25,6 @@ class AdminController extends Controller
         return redirect()->route('admin.login');
     }
 
-    public function pembimbing()
-    {
-
-        return view('admin.pembimbing');
-    }
-
     /**
      * Show the form for creating a new resource.
      */

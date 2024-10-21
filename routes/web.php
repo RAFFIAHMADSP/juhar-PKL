@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\admin\dudiController;
 use App\Http\Controllers\admin\guruController;
+use App\Http\Controllers\admin\PembimbingController;
 use App\Http\Controllers\Auth\adminLoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +34,14 @@ Route::middleware(['admin'])->group (function(){
     Route::put('/admin/dudi_update/{id}',[dudiController::class, "update"])->name('admin.dudi_update');
     Route::get('/admin/dudi_delete/{id}',[dudiController::class, "delete"])->name('admin.dudi_delete');
 
-    Route::get('/admin/pembimbing',[AdminController::class, "pembimbing"])->name('admin.pembimbing');
+    Route::get('/admin/pembimbing',[PembimbingController::class, "pembimbing"])->name('admin.pembimbing');
+    Route::get('/admin/pembimbing_tambah',[PembimbingController::class, "create"])->name('admin.pembimbing_create');
+    Route::post('/admin/pembimbing_tambah',[PembimbingController::class, "store"])->name('admin.pembimbing_store');
+    Route::get('/admin/pembimbing_edit/{id}',[PembimbingController::class, "edit"])->name('admin.pembimbing_edit');
+    Route::put('/admin/pembimbing_update/{id}',[PembimbingController::class, "update"])->name('admin.pembimbing_update');
+    Route::get('/admin/pembimbing_delete/{id}',[PembimbingController::class, "delete"])->name('admin.pembimbing_delete');
+
+  
 });
 
 

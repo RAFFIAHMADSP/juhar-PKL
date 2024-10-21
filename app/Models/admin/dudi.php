@@ -13,4 +13,8 @@ class dudi extends Model
     protected $primaryKey = 'id_dudi';
 
     protected $fillable = ['id_dudi', 'alamat_dudi', 'nama_dudi',];
+
+    public function pembimbingDudi(){
+        return $this->belongsTo(pembimbing::class, 'id_dudi', 'id_dudi');
+    }
 }

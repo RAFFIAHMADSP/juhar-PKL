@@ -16,4 +16,8 @@ class guru extends Model
     protected $hidden = [
         'password'
     ];
+
+    public function pembimbingGuru(){
+        return $this->belongsTo(pembimbing::class, 'id_guru', 'id_guru');
+    }
 }
