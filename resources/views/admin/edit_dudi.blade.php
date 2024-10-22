@@ -12,7 +12,7 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label" >nama dudi</label>
+                    <label for="nama_dudi" class="form-label" >nama dudi</label>
                     <input type="text" class="form-control" id="nama_dudi" name="nama_dudi" value="{{old('nama_dudi', $dudi->nama_dudi)}}" >
                     <div class="text-danger">
                     @error('nama_dudi')
@@ -20,7 +20,7 @@
                     @enderror</div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"  >alamat dudi</label>
+                    <label for="alamat_dudi" class="form-label"  >alamat dudi</label>
                     <input type="text" class="form-control" id="alamat_dudi" name="alamat_dudi" value="{{old('alamat_dudi', $dudi->alamat_dudi)}}">
                     <div class="text-danger">
                         @error('alamat_dudi')

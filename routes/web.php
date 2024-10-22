@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\admin\dudiController;
 use App\Http\Controllers\admin\guruController;
 use App\Http\Controllers\admin\PembimbingController;
+use App\Http\Controllers\admin\SiswaController;
 use App\Http\Controllers\Auth\adminLoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +42,15 @@ Route::middleware(['admin'])->group (function(){
     Route::put('/admin/pembimbing_update/{id}',[PembimbingController::class, "update"])->name('admin.pembimbing_update');
     Route::get('/admin/pembimbing_delete/{id}',[PembimbingController::class, "delete"])->name('admin.pembimbing_delete');
 
-  
+    Route::get('/admin/pembimbing/{id}/siswa',[SiswaController::class, "siswa"])->name('admin.pembimbing_siswa');
+    Route::get('/admin/pembimbing/{id}/siswa_tambah',[SiswaController::class, "create"])->name('admin.siswa_create');
+    Route::post('/admin/pembimbing/{id}/siswa_tambah',[SiswaController::class, "store"])->name('admin.siswa_store');
+    Route::get('/admin/pembimbing/{id}/siswa_edit/{id_siswa}',[SiswaController::class, "edit"])->name('admin.siswa_edit');
+    Route::put('/admin/pembimbing/{id}/siswa_update/{id_siswa}',[SiswaController::class, "update"])->name('admin.siswa_update');
+
+    Route::get('/admin/pembimbing/{id}/siswa_delete/{id_siswa}',[SiswaController::class, "delete"])->name('admin.siswa_delete');
+
+
 });
 
 

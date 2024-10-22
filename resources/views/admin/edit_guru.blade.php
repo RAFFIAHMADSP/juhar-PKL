@@ -12,7 +12,7 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label" >NIP</label>
+                    <label for="nip" class="form-label" >NIP</label>
                     <input type="text" class="form-control" id="nip" name="nip" value="{{old('nip', $guru->nip)}}" >
                     <div class="text-danger">
                     @error('nip')
@@ -20,7 +20,7 @@
                     @enderror</div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"  >email address</label>
+                    <label for="email" class="form-label"  >email address</label>
                     <input type="email" class="form-control" id="email" name="email" value="{{old('email', $guru->email)}}">
                     <div class="text-danger">
                         @error('Email')
@@ -28,7 +28,7 @@
                         @enderror</div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">password</label>
+                    <label for="password" class="form-label">password</label>
                     <input type="password" class="form-control" id="password" name="password">
                     <div class="text-danger">
                         @error('password')
@@ -36,7 +36,7 @@
                         @enderror</div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label"  >Nama Guru</label>
+                    <label for="nama_guru" class="form-label"  >Nama Guru</label>
                     <input type="text" class="form-control" id="nama_guru" name="nama_guru"  value="{{old('nama_guru', $guru->nama_guru)}}">
                     <div class="text-danger">
                         @error('nama_guru')
@@ -44,7 +44,7 @@
                         @enderror</div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">foto</label>
+                    <label for="foto" class="form-label">foto</label>
                     <input type="file" class="form-control" id="foto" name="foto">
                     <div class="text-danger">
                         @error('foto')

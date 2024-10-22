@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('siswa', function (Blueprint $table) {
             $table->integer('id_siswa')->primary()->autoIncrement();
 
-            $table->integer('pembimbing');
-            $table->foreign('pembimbing')
+            $table->integer('id_pembimbing');
+            $table->foreign('id_pembimbing')
                   ->references('id_pembimbing')
                   ->on('pembimbing')
                   ->onDelete('cascade')

@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Tambah Guru')
+@section('title', 'Tambah Siswa')
 
 @section('content')
 
@@ -8,21 +8,21 @@
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
             <h6 class="mb-4">Basic Form</h6>
-            <form action="{{route('admin.guru_store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.siswa_store', $id )}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="nip" class="form-label">NIP</label>
-                    <input type="text" class="form-control" id="nip" name="nip">
+                    <label for="nisn" class="form-label">nisn</label>
+                    <input type="text" class="form-control" id="nisn" name="nisn">
                     <div class="text-danger">
-                    @error('nip')
+                    @error('nisn')
                         {{$message}}
                     @enderror</div>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <label for="nama_siswa" class="form-label">nama siswa</label>
+                    <input type="text" class="form-control" id="nama_siswa" name="nama_siswa">
                     <div class="text-danger">
-                        @error('email')
+                        @error('nama_siswa')
                             {{$message}}
                         @enderror</div>
                 </div>
@@ -31,14 +31,6 @@
                     <input type="password" class="form-control" id="password" name="password">
                     <div class="text-danger">
                         @error('password')
-                            {{$message}}
-                        @enderror</div>
-                </div>
-                <div class="mb-3">
-                    <label for="nama_guru" class="form-label">Nama Guru</label>
-                    <input type="text" class="form-control" id="nama_guru" name="nama_guru">
-                    <div class="text-danger">
-                        @error('nama_guru')
                             {{$message}}
                         @enderror</div>
                 </div>

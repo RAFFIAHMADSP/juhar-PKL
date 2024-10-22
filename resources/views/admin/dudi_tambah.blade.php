@@ -11,7 +11,7 @@
             <form action="{{route('admin.dudi_create')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nama dudi</label>
+                    <label for="nama_dudi" class="form-label">Nama dudi</label>
                     <input type="text" class="form-control" id="nama_dudi" name="nama_dudi">
                     <div class="text-danger">
                     @error('nama_dudi')
@@ -19,7 +19,7 @@
                     @enderror</div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Alamat dudi</label>
+                    <label for="alamat_dudi" class="form-label">Alamat dudi</label>
                     <input type="text" class="form-control" id="alamat_dudi" name="alamat_dudi">
                     <div class="text-danger">
                         @error('alamat_dudi')

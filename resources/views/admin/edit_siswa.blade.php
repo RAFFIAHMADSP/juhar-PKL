@@ -1,30 +1,23 @@
 @extends('admin.layout.app')
 
-@section('title', 'Tambah Guru')
+@section('title', 'Edit siswa')
 
 @section('content')
 
 <div class="row g-4" >
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
-            <h6 class="mb-4">Basic Form</h6>
-            <form action="{{route('admin.guru_store')}}" method="POST" enctype="multipart/form-data">
+            <h6 class="mb-4">Edit siswa</h6>
+            <form action="{{ route('admin.siswa_update', ['id' => $id, 'id_siswa' => $siswa->id_siswa]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="mb-3">
-                    <label for="nip" class="form-label">NIP</label>
-                    <input type="text" class="form-control" id="nip" name="nip">
+                    <label for="nisn" class="form-label" >nisn</label>
+                    <input type="text" class="form-control" id="nisn" name="nisn" value="{{old('nisn', $siswa->nisn)}}" >
                     <div class="text-danger">
-                    @error('nip')
+                    @error('nisn')
                         {{$message}}
                     @enderror</div>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email">
-                    <div class="text-danger">
-                        @error('email')
-                            {{$message}}
-                        @enderror</div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">password</label>
@@ -35,10 +28,10 @@
                         @enderror</div>
                 </div>
                 <div class="mb-3">
-                    <label for="nama_guru" class="form-label">Nama Guru</label>
-                    <input type="text" class="form-control" id="nama_guru" name="nama_guru">
+                    <label for="nama_siswa" class="form-label"  >Nama siswa</label>
+                    <input type="text" class="form-control" id="nama_siswa" name="nama_siswa"  value="{{old('nama_siswa', $siswa->nama_siswa)}}">
                     <div class="text-danger">
-                        @error('nama_guru')
+                        @error('nama_siswa')
                             {{$message}}
                         @enderror</div>
                 </div>
@@ -50,6 +43,7 @@
                             {{$message}}
                         @enderror</div>
                 </div>
+                <div class="mb-2"> <img src="{{ asset('storage/' . $siswa->foto) }}" alt="" height="80"></div>
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </form>
         </div>
