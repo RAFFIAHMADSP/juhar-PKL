@@ -29,7 +29,13 @@
                     @foreach ($gurus as $guru)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $guru->nip }}</td>
+                        <td>
+                            @if($guru->NIP)
+                            {{$guru->NIP}}
+                            @else
+                            belum memiliki nip
+                            @endif
+                        </td>
                         <td>{{ $guru->email }}</td>
                         <td>{{ $guru->nama_guru }}</td>
                         <td>
