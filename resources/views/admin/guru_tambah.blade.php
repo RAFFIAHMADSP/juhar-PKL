@@ -11,10 +11,10 @@
             <form action="{{route('admin.guru_store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="nip" class="form-label">NIP</label>
-                    <input type="text" class="form-control" id="nip" name="nip">
+                    <label for="NIP" class="form-label">NIP</label>
+                    <input type="text" class="form-control" id="NIP" name="NIP">
                     <div class="text-danger">
-                    @error('nip')
+                    @error('NIP')
                         {{$message}}
                     @enderror</div>
                 </div>

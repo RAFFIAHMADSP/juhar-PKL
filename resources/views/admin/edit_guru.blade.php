@@ -12,10 +12,10 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
-                    <label for="nip" class="form-label" >NIP</label>
-                    <input type="text" class="form-control" id="nip" name="nip" value="{{old('nip', $guru->nip)}}" >
+                    <label for="NIP" class="form-label" >NIP</label>
+                    <input type="text" class="form-control" id="NIP" name="NIP" value="{{old('NIP', $guru->NIP)}}" >
                     <div class="text-danger">
-                    @error('nip')
+                    @error('NIP')
                         {{$message}}
                     @enderror</div>
                 </div>

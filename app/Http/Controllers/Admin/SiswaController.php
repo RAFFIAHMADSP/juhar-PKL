@@ -110,4 +110,11 @@ class SiswaController extends Controller
         return redirect()->back()->with('success', 'Data siswa berhasil dihapus.');
     }
 
+    public function siswaGuru($id){
+
+        $siswas = siswa::where('id_pembimbing',$id)->get();
+        $siswa = siswa::where('id_pembimbing', $id)->first();
+        return view('guru.siswa', compact('siswas', 'siswa', 'id'));
+    }
+
 }

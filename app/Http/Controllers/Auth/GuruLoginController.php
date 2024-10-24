@@ -30,8 +30,6 @@ class GuruLoginController extends Controller
                      ->onlyInput('nip_or_email');
     }
 
-    public function dashboard(){
-        return view('guru.guru_dashboard');
-    }
+    
 
 }

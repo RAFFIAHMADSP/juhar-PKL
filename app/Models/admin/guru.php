@@ -12,7 +12,7 @@ class guru extends Authenticatable
     protected $table = 'guru';
     protected $primaryKey = 'id_guru';
 
-    protected $fillable = ['nip', 'password', 'email', 'nama_guru', 'foto'];
+    protected $fillable = ['NIP', 'password', 'email', 'nama_guru', 'foto'];
 
     protected $hidden = [
         'password'

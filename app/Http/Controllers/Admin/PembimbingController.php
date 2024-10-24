@@ -7,6 +7,7 @@ use App\Models\admin\dudi;
 use App\Models\Admin\guru;
 use App\Models\admin\pembimbing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PembimbingController extends Controller
 {
@@ -110,6 +111,14 @@ class PembimbingController extends Controller
 
     }
 
-   
+    public function pembimbingGuru(){
+
+        $id_guru= Auth::guard('guru')->user()->id_guru;
+        $pembimbings = pembimbing::where('id_guru', $id_guru)->get();
+
+        return view('guru.pembimbing_guru', compact('pembimbings'));
+    }
+
+
 
 }

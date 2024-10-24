@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\guru;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,7 +35,7 @@ class guruController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nip' => 'nullable|unique:guru,nip|digits:18',
+            'NIP' => 'nullable|unique:guru,NIP|digits:18',
             'email' => 'required|email|unique:guru,email',
             'password' => 'required|min:8',
             "nama_guru" => 'required',
@@ -52,7 +53,7 @@ class guruController extends Controller
         }
 
        guru::create([
-            'nip' => $request->nip,
+            'NIP' => $request->NIP,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'nama_guru' => $request->nama_guru,
@@ -90,7 +91,7 @@ class guruController extends Controller
         $guru = guru::find($id);
 
         $request->validate([
-            'nip' => 'nullable|digits:18|unique:guru,nip,' . $guru->id_guru . ',id_guru',
+            'NIP' => 'nullable|digits:18|unique:guru,NIP,' . $guru->id_guru . ',id_guru',
             'email' => 'required|email|unique:guru,email,' . $guru->id_guru . ',id_guru',
             'password' => 'nullable|min:8',
             "nama_guru" => 'required',
@@ -111,7 +112,7 @@ class guruController extends Controller
         }
 
         $guru->update([
-            'nip' => $request->nip,
+            'NIP' => $request->NIP,
             'email' => $request->email,
             'password' => $request->filled('password') ? Hash::make($request->password) : $guru->password,
             'nama_guru' => $request->nama_guru,
@@ -145,4 +146,59 @@ class guruController extends Controller
     {
         //
     }
+
+    public function dashboard(){
+        return view('guru.guru_dashboard');
+    }
+
+    public function logoutGuru(Request $request)
+    {
+        Auth::guard('guru')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('guru.login');
+    }
+
+    public function profileGuru(){
+        $profile = Auth::guard('guru')->user();
+        return view('guru.profile', compact('profile'));
+    }
+
+    public function updateGuru(Request $request)
+    {
+        $id_guru = Auth::guard('guru')->user()->id_guru;
+        $guru = guru::find($id_guru);
+
+        $request->validate([
+            'NIP' => 'nullable|digits:18|unique:guru,NIP,' . $id_guru . ',id_guru',
+            'email' => 'required|email|unique:guru,email,' . $id_guru . ',id_guru',
+            'password' => 'nullable|min:8',
+            "nama_guru" => 'required',
+            'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+        ]);
+
+        $foto = $guru->foto;
+
+        if ($request->hasFile('foto')) {
+            if ($foto) {
+                Storage::disk('public')->delete($foto);
+            }
+            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
+            $request->file('foto')->storeAs('foto_guru', $uniqueField, 'public');
+            $foto = 'foto_guru/' . $uniqueField;
+        }
+
+        $guru->update([
+            'NIP' => $request->NIP,
+            'email' => $request->email,
+            'password' => $request->filled('password') ? Hash::make($request->password) : $guru->password,
+            'nama_guru' => $request->nama_guru,
+            'foto' => $foto,
+        ]);
+
+        return redirect()->back()->with('success', 'Data guru berhasil diupdate');
+    }
+
+
+
 }

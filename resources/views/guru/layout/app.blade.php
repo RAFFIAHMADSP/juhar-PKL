@@ -56,15 +56,13 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">{{Auth::guard('guru')->user()->nama_admin}}</h6>
-                        <span>Admin</span>
+                        <h6 class="mb-0">{{Auth::guard('guru')->user()->nama_guru}}</h6>
+                        <span>Guru</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="{{route('admin.dashboard')}}" class="nav-item nav-link {{request()->routeIs('admin.dashboard') ? 'active' : ''}}" ><i class="bi bi-house"></i>Dashboard</a>
-                    <a href="{{route('admin.guru')}}" class="nav-item nav-link {{request()->routeIs('admin.guru*') ? 'active' : ''}}"><i class="bi bi-people-fill"></i>guru</a>
-                    <a href="{{route('admin.dudi')}}" class="nav-item nav-link {{request()->routeIs('admin.dudi*') ? 'active' : ''}}"><i class="bi bi-building"></i>DUDI</a>
-                    <a href="{{route('admin.pembimbing')}}" class="nav-item nav-link {{request()->routeIs('admin.pembimbing*') ? 'active' : ''}}"><i class="bi bi-person-badge-fill"></i>pembimbing</a>
+                    <a href="{{route('guru.dashboard')}}" class="nav-item nav-link {{request()->routeIs('guru.dashboard') ? 'active' : ''}}" ><i class="bi bi-house"></i>Dashboard</a>
+                    <a href="{{route('guru.pembimbing')}}" class="nav-item nav-link {{request()->routeIs('guru.pembimbing*') ? 'active' : ''}}"><i class="bi bi-person-badge-fill"></i>pembimbing</a>
                 </div>
             </nav>
         </div>
@@ -88,11 +86,11 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="{{ asset('storage/'. Auth::guard('guru')->user()->foto) }}" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">{{Auth::guard('guru')->user()->nama_admin}}</span>
+                            <span class="d-none d-lg-inline-flex">{{Auth::guard('guru')->user()->nama_guru}}</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="{{ route('admin.profile') }}" class="dropdown-item">My Profile</a>
-                            <a href="{{route('admin.logout')}}" class="dropdown-item">Log Out</a>
+                            <a href="{{route('guru.profile')}}" class="dropdown-item">My Profile</a>
+                            <a href="{{ route('guru.logout')}}" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
