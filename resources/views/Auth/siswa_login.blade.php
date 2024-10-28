@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>JUHAR Guru Login</title>
+    <title>JUHAR siswa Login</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -51,6 +51,8 @@
                             {{$errors->first('login_eror')}}
                         </div>
                         @endif
+
+
                         <div class="d-flex flex-column align-items-center justify-content-center mb-3">
                             <a href="index.html" class="">
                                 <h3 class="text-primary"><i></i></h3>
@@ -60,14 +62,14 @@
                                 <i class="fa fa-home" style="font-size: 30px;"></i>
                             </a>
                         </div>
-                        <form action="{{route('guru.submit')}}" method="post">
+                        <form action="{{route('siswa.submit')}}" method="post">
                             @csrf
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="nip_or_email" id="floatingInput"
-                                    placeholder="nip atau email" value="{{ old('nip_or_email') }}">
-                                <label for="floatingInput">nip atau     email</label>
+                                <input type="text" class="form-control" name="nisn" id="floatingInput"
+                                    placeholder="nisn" value="{{ old('nisn') }}">
+                                <label for="floatingInput">nisn</label>
                                 <div class="text-danger">
-                                    @error('nip_or_email')
+                                    @error('nisn')
                                         {{ $message }}
                                     @enderror
                                 </div>

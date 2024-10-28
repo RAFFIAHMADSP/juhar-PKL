@@ -3,10 +3,12 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\admin\dudiController;
 use App\Http\Controllers\admin\guruController;
+use App\Http\Controllers\Admin\KegiatanController;
 use App\Http\Controllers\admin\PembimbingController;
 use App\Http\Controllers\admin\SiswaController;
 use App\Http\Controllers\Auth\adminLoginController;
 use App\Http\Controllers\Auth\GuruLoginController;
+use App\Http\Controllers\Auth\siswaLoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,6 +21,11 @@ Route::middleware(['guest'])->group(function(){
 
     Route::get('/guru/login',[GuruLoginController::class, "login"])->name('guru.login');
     Route::post('/guru/submit',[GuruLoginController::class, "submit"])->name('guru.submit');
+
+    Route::get('/siswa/login',[siswaLoginController::class, "login"])->name('siswa.login');
+    Route::post('/siswa/submit',[siswaLoginController::class, "submit"])->name('siswa.submit');
+
+
 
 });
 
@@ -64,7 +71,20 @@ Route::middleware(['guru'])->group (function(){
     Route::get('/guru/pembimbing',[PembimbingController::class, "pembimbingGuru"])->name('guru.pembimbing');
     Route::get('/guru/logout',[guruController::class, "logoutGuru"])->name('guru.logout');
     Route::get('/guru/pembimbing/{id}/siswa',[SiswaController::class, "siswaGuru"])->name('guru.pembimbing.siswa');
+    Route::get('/guru/pembimbing/{id}/siswa/{id_siswa}/kegiatan',[KegiatanController::class, "kegiatan"])->name('guru.pembimbing.siswa.kegiatan');
+    Route::get('/guru/pembimbing/{id}/siswa/{id_siswa}/kegiatan_detail{id_kegiatan}',[KegiatanController::class, "detailKegiatan"])->name('guru.pembimbing.siswa.kegiatan_detail');
     Route::get('/guru/profile',[guruController::class, "profileGuru"])->name('guru.profile');
     Route::put('/guru/profile_update',[guruController::class, "updateGuru"])->name('guru.profile_update');
+
+
+});
+
+Route::middleware(['siswa'])->group (function(){
+    Route::get('/siswa/dashboard',[SiswaController::class, "dashboard"])->name('siswa.dashboard');
+    Route::get('/siswa/logout',[SiswaController::class, "logoutSiswa"])->name('siswa.logout');
+    Route::get('/siswa/profile',[SiswaController::class, "profileSiswa"])->name('siswa.profile');
+    Route::put('/siswa/profile_update',[SiswaController::class, "updateSiswa"])->name('siswa.profile_update');
+    Route::get('/siswa/kegiatan',[KegiatanController::class, "kegiatanSiswa"])->name('siswa.kegiatan');
+
 
 });

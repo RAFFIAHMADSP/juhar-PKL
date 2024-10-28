@@ -2,10 +2,11 @@
 
 namespace App\Models\admin;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class siswa extends Model
+class siswa extends Authenticatable
 {
     use HasFactory;
 
@@ -18,5 +19,9 @@ class siswa extends Model
 
     public function pembimbingSiswa(){
         return $this->belongsTo(pembimbing::class, 'id_pembimbing', 'id_pembimbing');
+    }
+
+    public function kegiatan(){
+        return $this->hasMany(kegiatan::class, 'id_siswa', 'id_siswa');
     }
 }

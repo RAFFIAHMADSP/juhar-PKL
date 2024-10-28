@@ -4,6 +4,11 @@
 
 @section('content')
 
+@if ($errors->has('access'))
+<div class="alert alert-danger">
+    {{$errors->first('access')}}
+</div>
+@endif
 
     @if ($siswa)
         <div class="row  bg-light rounded align-items-center mx-0">
@@ -61,7 +66,7 @@
                                         height="30">
                                 </td>
                                 <td>
-                                    <a href="{{ route('admin.siswa_edit', ['id' => $id, 'id_siswa' => $siswa->id_siswa]) }}" class="btn btn-warning btn-sm">Kegiatan</a>
+                                    <a href="{{ route('guru.pembimbing.siswa.kegiatan', ['id' => $siswa->id_pembimbing, 'id_siswa' => $siswa->id_siswa]) }}" class="btn btn-warning btn-sm">Kegiatan</a>
                                 </td>
                             </tr>
                         @endforeach

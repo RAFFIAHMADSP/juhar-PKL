@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\admin\dudi;
 use App\Models\Admin\guru;
 use App\Models\admin\pembimbing;
+use App\Models\admin\siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -119,6 +120,6 @@ class PembimbingController extends Controller
         return view('guru.pembimbing_guru', compact('pembimbings'));
     }
 
-
-
+   
+    
 }

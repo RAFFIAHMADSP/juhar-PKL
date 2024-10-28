@@ -1,4 +1,4 @@
-@extends('guru.layout.app')
+@extends('siswa.layout.app')
 
 @section('title', 'Profile')
 
@@ -18,46 +18,30 @@
                     <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                 </div>
             </div>
-            <form action="{{route('guru.profile_update')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('siswa.profile_update')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
-                    <label for="NIP" class="form-label">NIP</label>
-                    <input type="text" class="form-control" id="NIP" name="NIP" value="{{old('NIP', $profile->NIP ?? 'belum punya nip')}}" readonly>
+                    <label for="nisn" class="form-label">nisn</label>
+                    <input type="text" class="form-control" id="nisn" name="nisn" value="{{old('nisn', $profile->nisn)}}" readonly>
                     <div class="text-danger">
-                    @error('NIP')
+                    @error('nisn')
                         {{$message}}
                     @enderror</div>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">email</label>
-                    <input type="text" class="form-control" id="email" name="email" value="{{old('email', $profile->email)}}">
+                    <label for="nama_siswa" class="form-label">Nama siswa</label>
+                    <input type="text" class="form-control" id="nama_siswa" name="nama_siswa" value="{{old('nama_siswa', $profile->nama_siswa)}}">
                     <div class="text-danger">
-                    @error('email')
-                        {{$message}}
-                    @enderror</div>
+                        @error('nama_siswa')
+                            {{$message}}
+                        @enderror</div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" >
                     <div class="text-danger">
                         @error('password')
-                            {{$message}}
-                        @enderror</div>
-                </div>
-                <div class="mb-3">
-                    <label for="nama_guru" class="form-label">Nama guru</label>
-                    <input type="text" class="form-control" id="nama_guru" name="nama_guru" value="{{old('nama_guru', $profile->nama_guru)}}">
-                    <div class="text-danger">
-                        @error('nama_guru')
-                            {{$message}}
-                        @enderror</div>
-                </div>
-                <div class="mb-3">
-                    <label for="foto" class="form-label">Foto</label>
-                    <input type="file" class="form-control" id="foto" name="foto" value="{{old('foto', $profile->foto)}}">
-                    <div class="text-danger">
-                        @error('foto')
                             {{$message}}
                         @enderror</div>
                 </div>

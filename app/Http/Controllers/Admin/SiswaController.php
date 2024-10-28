@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin\pembimbing;
 use App\Models\admin\siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -112,9 +114,75 @@ class SiswaController extends Controller
 
     public function siswaGuru($id){
 
+        $loginGuru = Auth::guard('guru')->user()->id_guru;
+        $pembimbing = pembimbing::find($id);
+
+        if (!$pembimbing || $pembimbing->id_guru !== $loginGuru){
+        return back()->withErrors(['access' => 'Akses anda di tolak.']);
+        }
+
+
         $siswas = siswa::where('id_pembimbing',$id)->get();
         $siswa = siswa::where('id_pembimbing', $id)->first();
         return view('guru.siswa', compact('siswas', 'siswa', 'id'));
     }
 
+    public function dashboard(){
+        return view('siswa.siswa_dasboard');
+    }
+
+    public function logoutSiswa(Request $request)
+    {
+        Auth::guard('siswa')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('siswa.login');
+    }
+
+    public function profileSiswa(){
+        $profile = Auth::guard('siswa')->user();
+        return view('siswa.profile', compact('profile'));
+    }
+
+    public function profileGuru(){
+        $profile = Auth::guard('guru')->user();
+        return view('guru.profile', compact('profile'));
+    }
+
+    public function updateSiswa(Request $request)
+    {
+        $id_siswa = Auth::guard('siswa')->user()->id_siswa;
+        $siswa = siswa::find($id_siswa);
+
+        $request->validate([
+            'nisn' => 'nullable|digits:10|unique:siswa,nisn,' . $id_siswa . ',id_siswa',
+            'password' => 'nullable|min:8',
+            "nama_siswa" => 'required',
+            'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+        ]);
+
+        $foto = $siswa->foto;
+
+        if ($request->hasFile('foto')) {
+            if ($foto) {
+                Storage::disk('public')->delete($foto);
+            }
+            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
+            $request->file('foto')->storeAs('foto_siswa', $uniqueField, 'public');
+            $foto = 'foto_siswa/' . $uniqueField;
+        }
+
+        $siswa->update([
+            'nisn' => $request->nisn,
+            'password' => $request->filled('password') ? Hash::make($request->password) : $siswa->password,
+            'nama_siswa' => $request->nama_siswa,
+            'foto' => $foto,
+        ]);
+
+        return redirect()->back()->with('success', 'Data siswa berhasil diupdate');
+    }
+
+    public function kegiatanSiswa() {
+        
+    }
 }

@@ -65,7 +65,7 @@
                             </div>
                         </a>
                         <br>
-                        <a href="">
+                        <a href="{{ route('siswa.login') }}">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">

@@ -133,7 +133,6 @@ class guruController extends Controller
                 Storage::disk('public')->delete($foto);
             }
         }
-
         $guru->delete();
 
         return redirect()->back()->with('success', 'Data guru berhasil dihapus.');
