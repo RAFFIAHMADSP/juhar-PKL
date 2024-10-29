@@ -45,7 +45,7 @@
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td style="text-align: center">{{ $kegiatan->waktu }}</td>
-                        <td>{{ $kegiatan->kegiatan }}</td>
+                        <td>{{ $kegiatan->nama_kegiatan }}</td>
                         <td>
                             <a href="{{ route('guru.pembimbing.siswa.kegiatan_detail', ['id' => $id_pembimbing, 'id_siswa' => $kegiatan->id_siswa, 'id_kegiatan' => $kegiatan->id_kegiatan]) }}" class="btn btn-warning btn-sm">Detail</a>
                         </td>

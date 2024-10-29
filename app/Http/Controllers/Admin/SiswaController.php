@@ -183,6 +183,6 @@ class SiswaController extends Controller
     }
 
     public function kegiatanSiswa() {
-        
+
     }
 }
