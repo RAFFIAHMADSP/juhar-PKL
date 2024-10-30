@@ -26,7 +26,7 @@ class siswaLoginController extends Controller
             return redirect()->route('siswa.dashboard');
         }
 
-        return back()->withErrors(['login_eror' => 'nisn atau password salah'])->onlyInput('nisn');
+        return back()->withErrors(['login_error' => 'nisn atau password salah'])->onlyInput('nisn');
 
     }
 }

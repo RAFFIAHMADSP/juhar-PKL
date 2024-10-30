@@ -75,7 +75,7 @@ class AdminController extends Controller
         $request->validate([
             'username' => 'required|unique:admin,username,'. $id_admin . ',id_admin',
             'password' => 'nullable|min:8',
-            "nama_admin" => 'required',
+            'nama_admin' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
         ]);
 

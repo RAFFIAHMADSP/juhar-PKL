@@ -32,7 +32,7 @@
 
                         <td>
                             <a href="{{ route('admin.dudi_edit', $dudi->id_dudi) }}" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="{{ route('admin.dudi_delete', $dudi->id_dudi)}}" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Delet</a>
+                            <a href="{{ route('admin.dudi_delete', $dudi->id_dudi)}}" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                     @endforeach

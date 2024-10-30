@@ -7,7 +7,7 @@
 <div class="row g-4" >
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
-            <h6 class="mb-4">Basic Form</h6>
+            <h6 class="mb-4">Tambah Dudi</h6>
             <form action="{{route('admin.dudi_create')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">

@@ -14,13 +14,20 @@ class SiswaController extends Controller
 {
     public function siswa($id) {
 
+        $pembimbing = pembimbing::find($id);
+        if(!$pembimbing) {
+            return back();
+        }
         $siswas = siswa::where('id_pembimbing',$id)->get();
         $siswa = siswa::where('id_pembimbing', $id)->first();
         return view('admin.siswa', compact('siswas', 'siswa', 'id'));
     }
 
     public function create($id){
-
+        $pembimbing = pembimbing::find($id);
+        if(!$pembimbing) {
+            return back();
+        }
         return view('admin.tambah_siswa', compact('id'));
     }
 
@@ -57,7 +64,14 @@ class SiswaController extends Controller
 
     public function edit(string $id, $id_siswa)
     {
+        $pembimbing = pembimbing::find($id);
+        if(!$pembimbing) {
+            return back();
+        }
         $siswa = siswa::find($id_siswa);
+        if(!$siswa) {
+            return back();
+        }
         return view('admin.edit_siswa', compact('siswa', 'id'));
     }
 
@@ -76,7 +90,7 @@ class SiswaController extends Controller
 
         if ($request->hasFile('foto')) {
             if ($foto) {
-                Storage::disk('public')->delete('$foto');
+                Storage::disk('public')->delete($foto);
             }
             $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
 
@@ -157,7 +171,7 @@ class SiswaController extends Controller
         $request->validate([
             'nisn' => 'nullable|digits:10|unique:siswa,nisn,' . $id_siswa . ',id_siswa',
             'password' => 'nullable|min:8',
-            "nama_siswa" => 'required',
+            'nama_siswa' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
         ]);
 

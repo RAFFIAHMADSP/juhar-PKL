@@ -7,8 +7,7 @@
 <div class="row g-4" >
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
-            @if (session('success
-            '))
+            @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>

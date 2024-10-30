@@ -3,11 +3,15 @@
 @section('title', 'Edit kegiatan')
 
 @section('content')
-
+@if ($errors->has('access'))
+<div class="alert alert-danger">
+    {{$errors->first('access')}}
+</div>
+@endif
 <div class="row g-4" >
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
-            <h6 class="mb-4">Basic Form</h6>
+            <h6 class="mb-4">Edit kegiatan</h6>
             <form action="{{ route('siswa.kegiatan_update', $kegiatan->id_kegiatan) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')

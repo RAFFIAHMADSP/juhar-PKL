@@ -7,14 +7,14 @@
 <div class="row g-4" >
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
-            <h6 class="mb-4">Basic Form</h6>
+            <h6 class="mb-4">Tambah Kegiatan</h6>
             <form action="{{ route('siswa.kegiatan_store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="nama_kegiatan" class="form-label">kegiatan</label>
                     <input type="text" class="form-control" id="nama_kegiatan" name="nama_kegiatan">
                     <div class="text-danger">
-                    @error('kegiatan')
+                    @error('nama_kegiatan')
                         {{$message}}
                     @enderror</div>
                 </div>

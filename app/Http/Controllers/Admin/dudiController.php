@@ -34,12 +34,15 @@ class dudiController extends Controller
 
         ]);
 
-        return redirect()->route('admin.dudi')->with('Berhasil menambahkan DUDI');
+        return redirect()->route('admin.dudi')->with('success', 'Berhasil menambahkan DUDI');
     }
 
     public function edit(string $id)
     {
         $dudi = dudi::find($id);
+        if(!$dudi) {
+            return back();
+        }
         return view('admin.edit_dudi', compact('dudi'));
     }
 
@@ -61,7 +64,7 @@ class dudiController extends Controller
             'alamat_dudi' => $request->alamat_dudi,
         ]);
 
-        return redirect()->route('admin.dudi')->with('succsess',' Data dudi berhasil diupdate');
+        return redirect()->route('admin.dudi')->with('success',' Data dudi berhasil diupdate');
     }
 
     public function delete($id){

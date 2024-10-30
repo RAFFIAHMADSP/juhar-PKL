@@ -7,7 +7,7 @@
 <div class="row g-4" >
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
-            <h6 class="mb-4">Basic Form</h6>
+            <h6 class="mb-4">Tambah Siswa</h6>
             <form action="{{route('admin.siswa_store', $id )}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">

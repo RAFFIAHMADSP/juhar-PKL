@@ -26,7 +26,7 @@ class adminLoginController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        return back()->withErrors(['login_eror' => 'Username atau password salah'])->onlyInput('username');
+        return back()->withErrors(['login_error' => 'Username atau password salah'])->onlyInput('username');
 
     }
 }

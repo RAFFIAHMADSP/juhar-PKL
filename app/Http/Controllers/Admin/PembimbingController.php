@@ -68,6 +68,10 @@ class PembimbingController extends Controller
     {
         $pembimbing = pembimbing::find($id);
 
+        if(!$pembimbing) {
+            return back();
+        }
+
         $gurus = guru::with('pembimbingGuru')->get();
         $dudis = dudi::with('pembimbingDudi')->get();
 
@@ -120,6 +124,6 @@ class PembimbingController extends Controller
         return view('guru.pembimbing_guru', compact('pembimbings'));
     }
 
-   
-    
+
+
 }

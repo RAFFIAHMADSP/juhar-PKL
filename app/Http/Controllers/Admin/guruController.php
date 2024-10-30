@@ -61,7 +61,7 @@ class guruController extends Controller
 
         ]);
 
-        return redirect()->route('admin.guru')->with('succses', 'Data guru berhasil di tambah ');
+        return redirect()->route('admin.guru')->with('success', 'Data guru berhasil di tambah ');
     }
 
     /**
@@ -78,6 +78,10 @@ class guruController extends Controller
     public function edit(string $id)
     {
         $guru = guru ::find($id);
+
+        if(!$guru) {
+            return back();
+        }
         return view('admin.edit_guru', compact('guru'));
     }
 
@@ -102,7 +106,7 @@ class guruController extends Controller
 
         if ($request->hasFile('foto')) {
             if ($foto) {
-                Storage::disk('public')->delete('$foto');
+                Storage::disk('public')->delete($foto);
             }
             $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
 
@@ -119,7 +123,7 @@ class guruController extends Controller
             'foto' => $foto,
         ]);
 
-        return redirect()->route('admin.guru')->with('succsess',' Data guru berhasil diupdate');
+        return redirect()->route('admin.guru')->with('success',' Data guru berhasil diupdate');
     }
 
     public function delete($id){

@@ -64,7 +64,7 @@
                                 <td>
                                     <a href="{{ route('admin.siswa_edit', ['id' => $id, 'id_siswa' => $siswa->id_siswa]) }}" class="btn btn-warning btn-sm">Edit</a>
                                     <a href="{{ route('admin.siswa_delete', ['id' => $id, 'id_siswa' => $siswa->id_siswa])}}" onclick="return confirm('Yakin ingin hapus data?')"
-                                        class="btn btn-danger btn-sm">Delet</a>
+                                        class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

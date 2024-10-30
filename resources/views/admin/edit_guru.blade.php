@@ -23,7 +23,7 @@
                     <label for="email" class="form-label"  >email address</label>
                     <input type="email" class="form-control" id="email" name="email" value="{{old('email', $guru->email)}}">
                     <div class="text-danger">
-                        @error('Email')
+                        @error('email')
                             {{$message}}
                         @enderror</div>
                 </div>

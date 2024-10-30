@@ -34,18 +34,20 @@
         <div class="bg-light rounded h-100 p-4">
             <h6 class="mb-4">Detail kegiatan</h6>
             <form action="" method="POST" enctype="multipart/form-data">
-
                 <div class="mb-3">
                     <label for="waktu" class="form-label">tanggal kegiatan</label>
                     <input type="text" class="form-control" id="waktu" name="waktu" value="{{old('waktu', $kegiatan->waktu)}}"  readonly>
                 </div>
                 <div class="mb-3">
                     <label for="ringkasan_kegiatan" class="form-label">ringkasan_kegiatan</label>
-                    <input type="text" class="form-control" id="ringkasan_kegiatan" name="ringkasan_kegiatan" value="{{old('ringkasan_kegiatan', $kegiatan->ringkasan_kegiatan)}}" readonly>
+                    <textarea rows="5" class="form-control" readonly>{{$kegiatan->ringkasan_kegiatan}}</textarea>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 d-flex flex-column">
                     <label for="foto" class="form-label">foto kegiatan</label>
-                <div class="mb-2"> <img src="{{ asset('storage/' . $kegiatan->foto) }}" alt="" height="80"></div>
+                    <div class="text-center">
+                        <div class="mb-2"> <img src="{{ asset('storage/' . $kegiatan->foto) }}" alt="" width="700"></div>
+                    </div>
+                </div>
                 <button  type="submit" class="btn btn-primary">
                     <a href="{{ route('guru.pembimbing.siswa.kegiatan', ['id' => $id, 'id_siswa' => $kegiatan->id_siswa]) }}" class="btn btn-primary ">kembali</a>
                 </button>

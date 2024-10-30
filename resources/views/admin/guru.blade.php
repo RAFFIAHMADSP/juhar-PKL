@@ -43,7 +43,7 @@
                         </td>
                         <td>
                             <a href="{{ route('admin.guru_edit', $guru->id_guru) }}" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="{{ route('admin.guru_delete', $guru->id_guru)}}" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Delet</a>
+                            <a href="{{ route('admin.guru_delete', $guru->id_guru)}}" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                     @endforeach
