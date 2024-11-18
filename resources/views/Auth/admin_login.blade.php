@@ -47,9 +47,9 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                         @if ($errors->has('login_error'))
-                        <div class="alert alert-danger">
-                            {{$errors->first('login_error')}}
-                        </div>
+                            <div class="alert alert-danger">
+                                {{ $errors->first('login_error') }}
+                            </div>
                         @endif
                         <div class="d-flex align-items-center justify-content-center mb-3">
                             <a href="index.html" class="">
@@ -57,7 +57,7 @@
                             </a>
                             <h3 class="">login min</h3>
                         </div>
-                        <form action="{{route('admin.submit')}}" method="post">
+                        <form action="{{ route('admin.submit') }}" method="post">
                             @csrf
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="username" id="floatingInput"
